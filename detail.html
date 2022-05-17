@@ -15,8 +15,7 @@
     </ul>
 <script>
     const country = JSON.parse({{.Data}})[0];   
-    console.log(country);
-    document.getElementById("nativename").innerHTML = `<b>Native Name:</b>: ${country.name.nativeName.official}`;
+    document.getElementById("nativename").innerHTML = `<b>Native Name:</b>: ${country.name.common}`;
     document.getElementById("poulation").innerHTML = `<b>Population:</b>: ${country.population}`;
     document.getElementById("continents").innerHTML = `<b>Continents:</b>: ${country.continents.join(',')}`;
     document.getElementById("capital").innerHTML = `<b>Capital:</b>: ${country.capital.join(',')}`;
