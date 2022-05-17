@@ -1,0 +1,42 @@
+<head>
+    <title>{{.PageTitle}}</title>
+</head>
+
+<body>
+    <a href="/"><h1>{{.PageTitle}}</h1></a>
+    <form action="#">
+        <label>Search for a country: (not working yet)</label><br />
+        <input id="country_search_input" type="text" name="search" onchange="handleSearch()" />
+    </form>
+    <ul id="all-countries" />
+    <script>
+        const allCountries = JSON.parse({{.Data }});
+        const allCountriesElement = document.getElementById("all-countries");
+        let count = 0;
+        while (count < 10) {
+            const
+                li = document.createElement('li'),
+                a = document.createElement('a'),
+                dt = document.createElement('dt'),
+                dd = document.createElement('dd');
+
+            a.setAttribute('href', '/detail/' + allCountries[count].name.common);
+            dt.innerText = allCountries[count].name.common;
+            dd.innerText = allCountries[count].continents.join(',');
+
+            a.appendChild(dt);
+            a.appendChild(dd);
+            li.appendChild(a);
+            allCountriesElement.append(li);
+
+            count++;
+        }
+
+        function handleSearch() {
+            const searchInput = document.getElementById('country_search_input');
+            console.log(searchInput.value);
+        }
+  
+        
+    </script>
+</body>

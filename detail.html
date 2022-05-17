@@ -1,0 +1,27 @@
+<head>
+    <title>{{.PageTitle}}</title>
+</head>
+
+<body>
+    <a href="/"><h1>{{.PageTitle}}</h1></a>
+    <ul id="country-detail">
+        <li id="nativename" /li>
+        <li id="poulation" /li>
+        <li id="continents" /li>
+        <li id="capital" /li>
+        <li id="languages" /li>
+        <li id="currencies" />
+        <li id="borders" /li>
+    </ul>
+<script>
+    const country = JSON.parse({{.Data}})[0];   
+    console.log(country);
+    document.getElementById("nativename").innerHTML = `<b>Native Name:</b>: ${country.name.nativeName.official}`;
+    document.getElementById("poulation").innerHTML = `<b>Population:</b>: ${country.population}`;
+    document.getElementById("continents").innerHTML = `<b>Continents:</b>: ${country.continents.join(',')}`;
+    document.getElementById("capital").innerHTML = `<b>Capital:</b>: ${country.capital.join(',')}`;
+    document.getElementById("languages").innerHTML = `<b>Languages:</b>: ${Object.keys(country.languages).join(',')}`;
+    document.getElementById("currencies").innerHTML = `<b>Currencies:</b>: ${Object.keys(country.currencies).join(',')}`;
+    document.getElementById("borders").innerHTML = `<b>Borders:</b>: ${country.borders.join(',')}`;
+</script>
+</body>
